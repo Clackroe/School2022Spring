@@ -1,10 +1,10 @@
 # from polygons import Polygons
 import math
 import pygame
-import polygons
+from polygons import Polygons
 
 
-class PygameGUI(polygons):  # Something is missing here
+class PygameGUI(Polygons):  # Something is missing here
     # TODO 7: Fix this class so that it inherits from the Polygons class
 
     def __init__(self, num_sides, side_length):
