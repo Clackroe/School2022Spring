@@ -3,7 +3,7 @@ import math
 import pygame
 
 
-class PygameGUI():  # Something is missing here
+class PygameGUI(Polygons):  # Something is missing here
     # TODO 7: Fix this class so that it inherits from the Polygons class
 
     def __init__(self, num_sides, side_length):

@@ -3,13 +3,14 @@ import math
 import tkinter as tk
 
 
-class TkinterGUI():  # Something is missing here
+class TkinterGUI(Polygons):  # Something is missing here
     # TODO 5: Fix this class so that it inherits from the Polygons class
 
     def __init__(self, num_sides, side_length):
         # TODO 6: Fix this so that it calls the __init__ method of the Polygons class
         # - You will need to use the super() function and pass in the correct arguments
-
+        
+        super(num_sides, side_length)
         self.root = tk.Tk()
         self.root.title("Tkinter Polygon Visualizer")
         self.root.geometry("800x600")
