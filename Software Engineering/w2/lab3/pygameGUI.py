@@ -7,6 +7,8 @@ from polygons import Polygons
 class PygameGUI(Polygons):  # Something is missing here
     # TODO 7: Fix this class so that it inherits from the Polygons class
 
+    radius = 0
+    
     def __init__(self, num_sides, side_length):
         # TODO 8: Fix this so that it calls the __init__ method of the Polygons class
         # - You will need to use the super() function and pass in the correct arguments

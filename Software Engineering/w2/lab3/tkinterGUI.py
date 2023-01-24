@@ -10,7 +10,7 @@ class TkinterGUI(Polygons):  # Something is missing here
         # TODO 6: Fix this so that it calls the __init__ method of the Polygons class
         # - You will need to use the super() function and pass in the correct arguments
         
-        super(num_sides, side_length)
+        super().__init__(num_sides, side_length)
         self.root = tk.Tk()
         self.root.title("Tkinter Polygon Visualizer")
         self.root.geometry("800x600")

@@ -2,6 +2,10 @@ import math
 
 
 class Polygons:
+    
+    num_sides =0
+    side_length = 0
+    area=0
 
     def __init__(self, num_sides, side_length):
         """
@@ -17,14 +21,14 @@ class Polygons:
         # TODO 1: Create an attribute called num_sides and set it to the num_sides given in the constructor
         pass  # Replace this line with your code
     
-        num_sides = num_sides
+        self.num_sides = num_sides
         
         
 
         # TODO 2: Create an attribute called side_length and set it to the side_length given in the constructor
         pass  # Replace this line with your code
     
-        side_length = side_length
+        self.side_length = side_length
 
         # TODO 3: Create an attribute called radius and set it equal to the result of the following formula:
         # - side_length / (2 * sin(pi / num_sides))
