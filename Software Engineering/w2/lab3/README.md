@@ -46,5 +46,5 @@ The goal of this lab is to introduce you to module dependencies and inheritance 
 - On Canvas, submit the following:
   - A zip file of the entire `lab3` directory, renamed as your NinerNetID.zip (e.g., dgary9.zip)
     - **TIP:** If you are struggling to remember how to zip your submission, here's an example of how to do it from the terminal on Mac or Linux machines: `zip -r -X dgary9.zip .`
-    - **TIP:** For Windows users who want to use their terminal to zip their submission, you can use the `7za` command. Here's an example of how to do it: `7za dgary9.zip .`
+    - **TIP:** For Windows users who want to use their terminal to zip their submission, you can use the `7za` command. Here's an example of how to do it: `7z a dgary9.zip lab3`
     - **NOTE:** In the above examples, `dgary9` is the NinerNetID of the student submitting the assignment and `.` is the directory that contains the files to be zipped, which is the current directory (`lab3`) in this case.
