@@ -1,21 +1,18 @@
-import numpy
+import numpy as np
 
 class QueensAI:
-           
     
-    def setup_board(self, size):
+    def __init__(self):
+        pass
+    
+    def display_board(self, board):
         
-        board = numpy.zeros((size, size))
-   
-    def print_board(self, board):
-        for rows in board:
-            for value in rows:
-                value=0
-                print(value, end="")
-                print(", ", end="")
+        for row in board:
+            for val in row:
+                print(val, ', ', end="")
             print()
+                    
 
-r = QueensAI(8)
-r.setup_board()
+    
    
         
