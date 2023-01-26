@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Evaluation1</string>
+    <string name="division_symbol">/</string>
+    <string name="number_hint_a">Enter Number A</string>
+    <string name="number_hint_b">Enter Number B</string>
+    <string name="equals">=</string>
+    <string name="quotient">0.00</string>
 </resources>
