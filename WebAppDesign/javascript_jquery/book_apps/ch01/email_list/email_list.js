@@ -28,7 +28,7 @@ const joinList = evt => {
         $("#first_name_error").textContent = "First name is required.";
         isValid = false;
     } else { 
-        $("#first_name_error").textContent = ""; 
+        $("#first_name_error").textContent = "";
     }
 
     // cancel form submit if any user entries are invalid
@@ -52,10 +52,16 @@ const clearForm = () => {
     $("#email_1").focus();
 };
 
+const formButtons = (evt) => {
+    if (evt.target.id == "join_list")
+        joinList(evt);
+    elseif (evt.target.id == "clear_form")
+        clearForm(evt);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     // hook up click events for both buttons
-    $("#join_list").addEventListener("click", joinList);
-    $("#clear_form").addEventListener("click", clearForm);
+    $("#email_form").addEventListener("click", formButtons)
 
     // set focus on first text box after the form loads
     $("#email_1").focus();
