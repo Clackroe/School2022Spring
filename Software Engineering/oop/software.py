@@ -1,4 +1,5 @@
 from tests import test_SoftwareStudent_constructor, test_SoftwareStudent_get_major, test_SoftwareStudent_get_greeting, test_SoftwareStudent_calculate_workload
+from student import Student
 
 # TODO 8: Import the Student class from student.py
 # - see the other files for examples of how to do this
@@ -14,13 +15,27 @@ from tests import test_SoftwareStudent_constructor, test_SoftwareStudent_get_maj
 # - calls the super constructor to initialize the `name`, `birth_year`, `student_id`, and `credit_hours` attributes
 # - initializes a new attribute called `major` and sets it to the `major` parameter
 
+class SoftwareStudent(Student):
+    
+    def __init__ (self, name, birth_year, student_id, credit_hours, major):
+        super().__init__(name, birth_year, student_id, credit_hours)
+        self.major = major
+    
+
 # TODO 10: Create a new method for the `SoftwareStudent` class called `get_major` that returns the `major` attribute
+
+    def get_major(self):
+        return self.major
 
 # TODO 11: Update the `get_greeting` method to return the following message:
 # - "Hello, my name is <self.name> and I am a <self.major> major."
+    def get_greeting(self):
+        return f"Hello, my name is {self.name} and I am a {self.major} major."
 
 # TODO 12: Update the `calculate_workload` method to return the following:
 # - the number of credit hours multiplied by 3 plus 10
+    def calculate_workload(self):
+        return (self.credit_hours * 3 ) + 10
 
 
 def main():

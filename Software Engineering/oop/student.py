@@ -18,6 +18,12 @@ class Student(Person):
     # - birth_year
     # - student_id
     # - credit_hours
+    def __init__(self, name, birth_year, student_id, credit_hours):
+        super().__init__(name, birth_year)
+        self.student_id = student_id
+        self.credit_hours = credit_hours
+        
+        
 
     # Enter the name of the file: /Users/akanimohumoren/Downloads/w1/lab1/response.txt
 
@@ -30,9 +36,15 @@ class Student(Person):
     # TODO 6: Create a method called `get_student_id` that returns the `student_id` attribute
     # - remember this method needs the `self` parameter to be tied to the object
 
+    def get_student_id(self):
+        return self.student_id
+
     # TODO 7: Create a method called `calculate_workload` that returns the number of credit hours multiplied by 3
 
-
+    def calculate_workload(self):
+        return self.credit_hours * 3
+        
+        
 def main():
 
     names_list = ["John", "Jane", "Joe", "Jill"]

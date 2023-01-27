@@ -19,11 +19,13 @@ class Person:
         # TODO 1: Complete this method so that it returns the message "Hello, my name is <self.name>."
         # - You can use f-strings, string concatenation, or string formatting (see moreSyntax folder)
         pass  # Replace this line with your code
+        return f"Hello, my name is {self.name}."
 
     def get_age(self):
         # TODO 2: Use the datetime module to get the year, then calculate and return the age
         # - This is already imported for you, so reference it as `date` (see README/docs for more)
         pass  # Replace this line with your code
+        return date.now().year - self.birth_year
 
 
 def main():
