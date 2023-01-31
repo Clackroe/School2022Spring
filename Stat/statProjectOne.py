@@ -39,7 +39,7 @@ c.pack()
 c.create_oval(center[0] - radius, center[1] + radius, center[0] + radius, center[1] - radius, outline="red")
 
 #Setup Variables
-points = [Point2D]
+points = []
 
 num_points = 3
 
@@ -48,9 +48,15 @@ def main():
     generate_points()
     draw_all_points()
 
-    sp.geometry.Line(points[1], center)
+    ln = sp.geometry.Line(points[1], center)
+    
+    inter:Point2D = ln.intersection(circ)
+    
+    print(inter[0].__getattribute__(X).simplify)
         
-  #  a = c.create_line(points[1][0], points[1][1], center[0], center[1, ])
+    #a = c.create_line(points[1][0], points[1][1], center[0], center[1])
+    #a = c.create_line(inter[0][0], inter[0][1], inter[1][0], inter[1][1])
+
     
     
     gui.mainloop()
@@ -63,7 +69,7 @@ def rand_point():
         while True:
             output[0], output[1] = random.uniform(x_min, x_max), random.uniform(y_min, y_max)
             if sqrt(pow(output[0]-x_center,2) + pow(output[1]-y_center,2)) <= radius:
-                return Point(output[0], output[1])
+                return [output[0], output[1]]
             
             
 def generate_points():
@@ -73,7 +79,7 @@ def generate_points():
 
 def draw_all_points():
     for i in range(len(points)):
-        draw_point(points[i].coordinates[0], points[i], "yellow")
+        draw_point(points[i][0], points[i][1], "yellow")
 
 
 #Draw a given point
