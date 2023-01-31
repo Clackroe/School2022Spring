@@ -1,5 +1,7 @@
 from ast import List
+
 import random
+
 import tkinter as tk
 from tkinter import *
 
