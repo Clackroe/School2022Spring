@@ -14,9 +14,10 @@ table
 	margin: 20px;
 }
 
-thead
+thead, tfoot
 {
 	background-color: lightgreen;
+	font-weight: bold;
 }
 
 th, td 
@@ -39,4 +40,19 @@ tbody tr:nth-child(even) td
 
 tbody tr td[rowspan]{
 	background-color: white;
+	font-weight: bold;
+
 }
+
+figure{
+	border-style: solid;
+
+}
+figcaption{
+	align-content: center;
+	text-align: center;
+	padding-top: 3%;
+	font-size: larger;
+	font-weight: bold;
+}
+

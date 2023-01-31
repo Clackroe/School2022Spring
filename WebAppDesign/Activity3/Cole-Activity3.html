@@ -9,62 +9,68 @@
 	</head>
 
 <body>
-	<table>
-		<thead>
-			<tr>
-				<th>Department</th>
-				<th>Name</th>
-				<th>E-mail</th>
-				<th class="right">Years of Service</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td rowspan="2">Editorial</td>
-				<td>Joel Murach</td>
-				<td>joelmurach@yahoo.com</td>
-				<td class="right">22</td>
-			</tr>
-			<tr>
-				
-				<td>Anne Boehm</td>
-				<td>anne@murach.com</td>
-				<td class="right">34</td>
-			</tr>
-			<tr>
-				<td rowspan="3">Marketing</td>
-				<td>Zak Ruvalcaba</td>
-				<td>zak@modulemedia.com</td>
-				<td class="right">4</td>
-			</tr>
-			<tr>
-				<td>Judy Taylor</td>
-				<td>judy@murach.com</td>
-				<td class="right">39</td>
-			</tr>
-			<tr>
+	<figure>
+		<figcaption>Employee Table</figcaption>
+		<table>
+			<thead>
+				<tr>
+					<th id="department">Department</th>
+					<th id="name">Name</th>
+					<th id="email">E-mail</th>
+					<th class="right" id="years">Years of Service</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="2" headers="department">Editorial</td>
+					<td headers="name">Joel Murach</td>
+					<td headers="email">joelmurach@yahoo.com</td>
+					<td class="right" headers="years">22</td>
+				</tr>
+				<tr>
+					
+					<td headers="name">Anne Boehm</td>
+					<td headers="email">anne@murach.com</td>
+					<td class="right" headers="years">34</td>
+				</tr>
+				<tr>
+					<td rowspan="3" headers="department">Marketing</td>
+					<td headers="name">Zak Ruvalcaba</td>
+					<td headers="email">zak@modulemedia.com</td>
+					<td class="right" headers="years">4</td>
+				</tr>
+				<tr>
+					<td headers="name">Judy Taylor</td>
+					<td headers="email">judy@murach.com</td>
+					<td class="right" headers="years">39</td>
+				</tr>
+				<tr>
 
-				<td>Cyndi Vasquez</td>
-				<td>cyndi@murach.com</td>
-				<td class="right">10</td>
-			</tr>
-			<tr>
-				<td rowspan="2">Customer Service</td>
-				<td>Kelly Slivkoff</td>
-				<td>kelly@murach.com</td>
-				<td class="right">25</td>
-			</tr>
-			<tr>
-				<td>Juliette Baylon</td>
-				<td>juliette@murach.com</td>
-				<td class="right">1</td>
-			</tr>
-			<tr>
-				<td class="right" colspan="3"><strong>Total Years of Service</strong></td>
-				<td class="right"><strong>105</strong></td>
-			</tr>
-		</tbody>
-	</table>
+					<td headers="name">Cyndi Vasquez</td>
+					<td headers="email">cyndi@murach.com</td>
+					<td class="right" headers="years">10</td>
+				</tr>
+				<tr>
+					<td rowspan="2" headers="department">Customer Service</td>
+					<td headers="name">Kelly Slivkoff</td>
+					<td headers="email">kelly@murach.com</td>
+					<td class="right" headers="years">25</td>
+				</tr>
+				<tr>
+					<td headers="name">Juliette Baylon</td>
+					<td headers="email">juliette@murach.com</td>
+					<td class="right" headers="years">1</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td class="right" colspan="3">Total Years of Service</td>
+					<td class="right">105</td>
+				</tr>
+			</tfoot>
+			
+		</table>
+	</figure>
 	<footer>
 		<a href="https://validator.w3.org">Validate HTML</a> <br>
 		<a href="https://jigsaw.w3.org/css-validator">Validate CSS</a>
