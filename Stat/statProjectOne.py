@@ -81,6 +81,7 @@ def draw_point(x, y, col: StringVar):
     c.create_oval(x-5, y+5, x+5, y-5, fill=col)
     
     
+    
 
 if __name__ == '__main__':
     main()
