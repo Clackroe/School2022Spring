@@ -1,8 +1,5 @@
 
-from queens import QueensAI
+from queens import Queens as q
 
-    
-arr = [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]
+h_value = 0
 
-q = QueensAI()
-q.display_board(arr)
