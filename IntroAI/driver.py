@@ -2,67 +2,77 @@
 from queens import Queen as q
 import numpy as np
 
-h_value = 0  #heuristic value
+class driver():
+    h_value = 0  #heuristic value
 
-#board setup
-board_size = 8;
-board = np.zeros((board_size, board_size), dtype=int) # initial board set to zeros
+    #board setup
+    board_size = 8;
+    board = np.zeros((board_size, board_size), dtype=int) # initial board set to zeros
 
-#queen setup
-qlist:q = []
+    #queen setup
+    qlist:q = []
 
-
-def main():
-
-    initialize_queens()
-    h_value = calculate_h()
-    generate_queens()
-    calculate_h()
-    print_board()
-
-
-
-
-#print the board in a correct format
-def print_board():
-    print(f"\n   Current h: {h_value}")
-    print(" --Current State---------")
-    for i in reversed(range(board_size)):
-        print("| ", end="")
-        for j in range(board_size):
-            if (j==board_size-1):
-                print(board[j][i], end=" |")
-            else:
-                print(f"{board[j][i]},", end=" ")
-        print()
-    print(" ------------------------")
+    #print the board in a correct format
+    def print_board(self):
+        print(f"\n   Current h: {self.h_value/2}")
+        print(" --Current State---------")
+        for i in reversed(range(self.board_size)):
+            print("| ", end="")
+            for j in range(self.board_size):
+                if (j==self.board_size-1):
+                    print(self.board[j][i], end=" |")
+                else:
+                    print(f"{self.board[j][i]},", end=" ")
+            print()
+        print(" ------------------------")
+        
     
-   
-def generate_queens():
-    for qt in qlist:
-        qt.generate_pos()
-        board[qt.position[0], qt.position[1]] = 1
-        
-def initialize_queens():
-    for i in range(board_size):
-        qlist.append(q(i, 0))
+    def generate_queens(self):
+        for qt in self.qlist:
+            qt.generate_pos()
+            self.board[qt.position[0], qt.position[1]] = 1
+            
+    def initialize_queens(self):
+        for i in range(self.board_size):
+            self.qlist.append(q(i, 0))
 
-def calculate_h() -> int:
-    val = 0
-    for i in range(len(qlist)):
-        for j in range(len(qlist)):
-            if (i == j):
-                pass
-            elif(qlist[i].compare_queens(qlist[j])):
-                val+=1
-    return val
-                
-
+    def calculate_h(self):
+        for i in range(len(self.qlist)):
+            for j in range(len(self.qlist)):
+                if (i == j):
+                    pass
+                elif(self.compare_queens(self.qlist[i], self.qlist[j])):
+                    self.h_value+=1
+                    
+    def compare_queens(self, a: q, b: q) -> bool:
+        ax: int = a.position[0]
+        ay: int = a.position[1]
+        bx: int = b.position[0]
+        by: int = b.position[1]
         
+        #Same row
+        if (ax == bx):
+            return True
+        #same collumn
+        elif (ay == by):
+            return True
+        #Diagonal
+        elif (abs(ax-bx) == abs(ay-by)):
+            return True
+        else:
+            return False
+                    
+
+            
 
 if __name__ == '__main__':
-    main()
-    
+    drive = driver()
+    drive.initialize_queens()
+    drive.generate_queens()
+    drive.calculate_h()
+    drive.calculate_h()
+    drive.print_board()
+        
 
 
 
