@@ -1,6 +1,6 @@
 import random as rand
 
-class Queen:
+class Queen():
     
     position = [0, 0]
     
@@ -9,8 +9,7 @@ class Queen:
     
     def compare_queens(self, other) -> bool:
         x = other.position[0]
-        y= other.position[1]
-        
+        y = other.position[1]
         
         if (y == self.position[1] or x == self.position[0]):
             return True
