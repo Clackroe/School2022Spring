@@ -19,6 +19,7 @@ def main():
     generate_queens()
     
     
+    
     print_board()
 
 
