@@ -43,7 +43,7 @@ class driver():
                     pass
                 elif(self.compare_queens(self.qlist[i], self.qlist[j])):
                     self.h_value+=1
-                    break;
+                    break
                     
     def compare_queens(self, a: q, b: q) -> bool:
         ax: int = a.position[0]
