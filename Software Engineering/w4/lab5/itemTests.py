@@ -110,9 +110,15 @@ def test_calculate_item_total_price_converts_discount(expected_discount: float =
     # - Compare the result to the expected_discount value
     # - Run the test before implementing the calculate_item_total_price method and check that it fails
     # - TIP: Use the round function to round the result to 2 decimal places
-    item = Item("Item", 1, 2, expected_discount)  # Replace None with the correct code
-    fail_case =  # Replace None with the correct code
-    actual_discount =  # Replace None with the correct code
+    item = Item("Item", 1, 1.0, expected_discount)  # Replace None with the correct code
+    item_price = item.calculate_item_total_price()
+
+    try:
+        actual_discount = round(1.0 - (item_price / (item.unit_price * item.quantity)), 2)  # Replace None with the correct code
+        fail_case =  expected_discount != actual_discount# Replace None with the correct code
+    except:
+        fail_case = True
+        actual_discount = -1        
 
     if fail_case:
         return (False, f"Error in test_calculate_item_price_converts_discount: Incorrect discount\n  - Expected: {expected_discount}\n  - Actual: {actual_discount}")
@@ -136,10 +142,14 @@ def test_calculate_item_total_price_correct() -> tuple[bool, str]:
     # - Compare the result to the expected value
     # - Run the test before implementing the calculate_item_total_price method and check that it fails
     # - TIP: Use the round function to round the result to 2 decimal places
-    item = None  # Replace None with the correct code
-    expected_item_price = None  # Replace None with the correct code
-    actual_item_price = None  # Replace None with the correct code
-    fail_case = None  # Replace None with the correct code
+    item = Item("Item", 1, 1.0)  # Replace None with the correct code
+    expected_item_price = item.quantity*item.unit_price*(1-0)  # Replace None with the correct code
+    try:
+        actual_item_price = item.calculate_item_total_price()  # Replace None with the correct code
+        fail_case = expected_item_price != actual_item_price  # Replace None with the correct code
+    except:
+        fail_case = True
+        actual_item_price = -1
 
     if fail_case:
         return (False, f"Error in test_calculate_item_price_correct: Incorrect item price\n  - Expected: {expected_item_price}\n  - Actual: {actual_item_price}")

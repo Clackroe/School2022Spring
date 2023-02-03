@@ -43,6 +43,7 @@ class driver():
                     pass
                 elif(self.compare_queens(self.qlist[i], self.qlist[j])):
                     self.h_value+=1
+                    break;
                     
     def compare_queens(self, a: q, b: q) -> bool:
         ax: int = a.position[0]
@@ -54,13 +55,12 @@ class driver():
         if (ax == bx):
             return True
         #same collumn
-        elif (ay == by):
+        if (ay == by):
             return True
         #Diagonal
-        elif (abs(ax-bx) == abs(ay-by)):
+        if (abs(ax-bx) == abs(ay-by)):
             return True
-        else:
-            return False
+        return False
                     
 
             
