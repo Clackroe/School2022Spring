@@ -30,6 +30,7 @@ class Item:
         # - Remember that the discount is a float between 0 and 1, so you'll need to convert it.
         # - You can use the `round` function to round the result to 2 decimal places.
         pass  # Replace this line with your code
+        return round((self.quantity *self.unit_price) - self.discount_percent, 2)
 
 
 class Invoice:
@@ -62,6 +63,8 @@ class Invoice:
         """
         # TODO 6: Implement this method
         # - Should create an Item object and append it to the self.items list.
+        item = Item(name, quantity, unit_price, discount_percent)
+        self.items.append(item)
 
     def request_input(self):
         """

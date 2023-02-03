@@ -83,10 +83,18 @@ def test_invoice_add_item_appends_item() -> tuple[bool, str]:
     # - Create a new Item object and add it to the invoice
     # - Check that the item inside the invoice.items list is the same as the item you created
     # - Run the test before implementing the Invoice.add_item method and check that it fails
-    invoice = None  # Replace None with the correct code
-    fail_case = True  # Replace True with the correct code
-    expected = None  # Replace None with the correct code
-    actual = None  # Replace None with the correct code
+    invoice = Invoice("John Smith", "2023-02-02", True)  # Replace None with the correct code
+    item = Item("Item23", 2, 1.0, 0.2)
+    invoice.add_item(item.name, item.quantity, item.unit_price, item.discount_percent)
+    try:
+        fail_case = invoice.items[0].name != item.name # Replace True with the correct code
+        actual = invoice.items[0].name  # Replace None with the correct code
+    except:
+        fail_case=True
+        actual = "N/A"
+    expected = item.name  # Replace None with the correct code    
+
+    
 
     if fail_case:
         return (False, f"Error in test_invoice_add_item_appends_item: Incorrect item\n  - Expected: {expected}\n  - Actual: {actual}")
@@ -107,12 +115,17 @@ def test_invoice_add_item_checks_discounted() -> tuple[bool, str]:
     # - Check that the item inside the invoice.items list has the expected discount percent
     # - Run the test before implementing the Invoice.add_item method and check that it fails
 
-    invoice = None  # Replace None with the correct code
-    fail_case = True  # Replace True with the correct code
-    expected = None  # Replace None with the correct code
-    actual = None  # Replace None with the correct code
-
-    fail_case = expected != actual
+    invoice = Invoice("Jerry Seinfeld", "2022-02-02", True)  # Replace None with the correct code
+    item = Item("Item3", 1, 1, 0.7)
+    invoice.add_item(item.name, item.quantity, item.unit_price, item.discount_percent)
+    expected = 0.7
+    try:
+        fail_case = invoice.items[0].discount_percent != expected # Replace True with the correct code
+        actual = invoice.items[0].discount_percent  # Replace None with the correct code
+    except:
+        fail_case = True
+        actual = -1
+        
     if fail_case:
         return (False, f"Error in test_invoice_add_item_checks_discounted: Incorrect discount percent\n  - Expected: {expected}\n  - Actual: {actual}")
     else:
