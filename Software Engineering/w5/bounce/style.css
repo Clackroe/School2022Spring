@@ -1,0 +1,49 @@
+/* Defining the keyframes, which will be used in the animation */
+
+@keyframes bounce {
+    0% {
+        top: -25%;
+        /* CSS has some awesome built-in easing functions */
+        animation-timing-function: ease-in;
+    }
+
+    50% {
+        top: 100%;
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        top: -25%;
+        animation-timing-function: ease-in;
+    }
+}
+
+.ball {
+    position: absolute;
+
+    /* rem is a relative unit of measurement */
+    width: 5rem;
+    height: 5rem;
+    left: 20%;
+
+    /* half the width */
+    margin-left: -2.5rem;
+
+    /* so it appears on top of the background */
+    z-index: 1;
+
+    /* animation-name, duration, delay, iteration-count */
+    animation: bounce 2s 1s infinite;
+
+    /* fill mode is a CSS3 property that allows you to define 
+    how the element should look like before and after the animation */
+    animation-fill-mode: both;
+
+    /* color should change */
+    background-color: rgb(79, 122, 215);
+
+    /* border-radius is a CSS3 property that allows you to round the corners of an element */
+    border-radius: 50%;
+}
+
+/* TODO 3: Complete the remaining shapes. Hints contained in the README.md file. */
