@@ -11,6 +11,9 @@ h2, h3{
     font-family: cursive;
     text-align: center;
 }
+.threeD{
+    transform-style: preserve-3d;
+}
 
 header, footer{
     background-color: rgb(133, 56, 99);
