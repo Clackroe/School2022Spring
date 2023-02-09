@@ -15,8 +15,15 @@ function decrement() {
     var num = parseFloat(document.frmCalc.txtNumber.value);
         if (!(isNaN(num))) {
             num--;
-            document.frmCalc.txtnumber.value = num;
+            document.frmCalc.txtNumber.value = num;
         }
+}
+function increment() {
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+    if (!(isNaN(num))) {
+        num++;
+        document.frmCalc.txtNumber.value = num;
+    }
 }
 
 //The following function is called when "Add" button is clicked. 
@@ -30,13 +37,55 @@ function add() {
         }
 }
 
+function subtract() {
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+        if (!(isNaN(num))) {
+            prevCalc = num;
+            document.frmCalc.txtNumber.value = "";
+            calc = "Sub";
+        }
+}
+
+function divide(){
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+        if (!(isNaN(num))) {
+            prevCalc = num;
+            document.frmCalc.txtNumber.value = "";
+            calc = "Div";
+        }
+}
+
+function pwr2(){
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+        if (!(isNaN(num))) {
+            num = num*num;
+            document.frmCalc.txtNumber.value = num;
+        }
+}
+
+function sqrt() {
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+        if (!(isNaN(num))) {
+            num = Math.sqrt(num);
+            document.frmCalc.txtNumber.value = num;
+        }
+}
+
 //The following function is called when "Calculate" button is clicked.
 //Note that this function is dependent on the value of global variable.        
 function calculate() {
     var num = parseFloat(document.frmCalc.txtNumber.value);
         if (!(isNaN(num))) {
             if (calc == "Add"){
-                var total = previousCalc + num;
+                var total = prevCalc + num;
+                document.frmCalc.txtNumber.value = total;
+            }
+            else if (calc == "Sub"){
+                var total = prevCalc - num;
+                document.frmCalc.txtNumber.value = total;
+            }
+            else if (calc == "Div"){
+                var total = prevCalc / num;
                 document.frmCalc.txtNumber.value = total;
             }
         
