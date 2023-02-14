@@ -3,6 +3,7 @@
 body
  {
     font-family:"arial";
+    text-align: center;
 }
         
 /*Make it look more like a calculator*/
@@ -13,6 +14,7 @@ body
     text-align:center;
     border:outset;
     padding:5px;
+    margin: auto;
 }
         
 /*Change the style of the buttons*/
