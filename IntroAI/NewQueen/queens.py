@@ -1,0 +1,33 @@
+import random as rand
+
+class Queen():
+    
+    posx = -1
+    posy = -1
+    
+    
+    def __init__(self, x:int, y:int):
+      self.posx = x
+      self.posy = y
+    
+
+
+    def generate_random_pos(self): #Randomized their y position to a random row
+        self.posy = rand.randint(0, 7)
+        
+    def compare_queen(self, q) -> bool:
+        bx: int = q.posx
+        by: int = q.posy
+        
+        if (self.posx == bx): #Same row
+            return True
+        if (self.posy == by): #same collumn
+            return True
+        if (abs(self.posx-bx) == abs(self.posy-by)): #Diagonal
+            return True
+        return False
+                    
+
+    
+   
+    
