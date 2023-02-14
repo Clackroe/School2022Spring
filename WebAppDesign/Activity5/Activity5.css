@@ -4,6 +4,7 @@ body
  {
     font-family:"arial";
     text-align: center;
+    
 }
         
 /*Make it look more like a calculator*/
@@ -15,6 +16,7 @@ body
     border:outset;
     padding:5px;
     margin: auto;
+    background-color: red;
 }
         
 /*Change the style of the buttons*/
