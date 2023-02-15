@@ -78,7 +78,9 @@ class driver():
                 if input[q] == input[q2]:
                     score += 1
 
-                if input[q] == input[q2] - (q - q2) or input[q] == input[q2] + (q - q2):
+                if input[q] == input[q2] - (q - q2):
+                    score += 1
+                elif input[q] == input[q2] + (q - q2):
                     score += 1
         return score
 
