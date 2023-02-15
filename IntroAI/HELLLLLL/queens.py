@@ -2,8 +2,8 @@ import random as rand
 
 class Queen():
     
-    posx = -1
-    posy = -1
+    posx = 0
+    posy = 0
     
     
     def __init__(self, x:int, y:int):
@@ -13,7 +13,7 @@ class Queen():
 
 
     def generate_random_pos(self): #Randomized their y position to a random row
-        self.posy = rand.randint(0, 7)
+        self.posy = rand.randint(self.posx, 7)
         
     def compare_queen(self, q) -> bool:
         bx: int = q.posx
