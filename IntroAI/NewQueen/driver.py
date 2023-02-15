@@ -5,12 +5,12 @@ from queens import Queen
 from board import Board
 
 
-curr_state = Board([])
+curr_state = Board([],[[]])
 
 goal_score = 0
 
 num_restarts = 0
-num_neighbors = 0
+
 num_states = 0
 
 
@@ -19,47 +19,42 @@ curr_state.start_random()
 
 
 
-loop = True
-while (loop):
-    
-    time.sleep(3)
-    neighbors = []
-    curr_state.place_queens()
+
+while(True):
     curr_state.calculate_score()
-    if(curr_state.score == goal_score):
-        loop = False
+    if(curr_state.score <= goal_score):
         break
-    else:
-        for q in range(len(curr_state.qlist)):
-            
-            for r in range (len(curr_state.qlist)):
-                temp = curr_state.produce_neighbor(q, r)
-                if (temp.score < curr_state.score):
-                    neighbors.append(temp)     
+    num_neighbors = 0
+    best_move = Board(curr_state.qlist.copy(), curr_state.board.copy())
+    best_move.calculate_score()
+    
+   # time.sleep(3)
+    for q in range(len(curr_state.qlist)):
         
-        if (len(neighbors) <=0):
-            curr_state.print_board()
-            print(f"No Better Neighbors Found..")
-            print("RESTARTING")
-            num_restarts +=1
-            curr_state = Board([])
-            curr_state.start_random()
-        else:
-            best_neighbor = Board([])
-            for n in neighbors:
-                if (len(best_neighbor.qlist) == 0):
-                    best_neighbor = n
-                else:
-                    if (n.score < best_neighbor.score):
-                        best_neighbor = n
-                    
+        for r in range(q+1, curr_state.length):
             
-            curr_state.print_board()
-            print(f"Number of Better Neighbors: {len(neighbors)}")
-            print(f"Setting New State...")
-            num_states +=1
-            curr_state = best_neighbor
-            curr_state.start()
+            temp = curr_state.produce_neighbor(q, r)
+            temp.calculate_score()
+            
+            
+            if (temp.score < best_move.score):
+                best_move = Board(temp.qlist.copy(), temp.board.copy())
+                best_move.calculate_score()
+                num_neighbors += 1
+   
+    if (num_neighbors == 0):
+        curr_state.print_board()
+        print("No Better States Found")
+        print("Restarting")
+        curr_state = Board([])
+        curr_state.start_random()
+    else:
+        curr_state.print_board()
+        print(f"Better Neighbors Found: {num_neighbors}")
+        print("SETTING NEW BOARD")
+        curr_state = Board(best_move.qlist.copy(), best_move.board.copy())
+        curr_state.calculate_score
+                
         
         
     

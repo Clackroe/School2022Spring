@@ -14,9 +14,9 @@ class Board():
     board = [[]]
     
     
-    def __init__(self, list): #Create with predefined list
+    def __init__(self, list, board): #Create with predefined list
         self.qlist = list
-        self.board = np.zeros((self.length, self.length), dtype=int)
+        self.board = board
         
     
     
@@ -31,6 +31,7 @@ class Board():
             q.generate_random_pos()
             
     def place_queens(self):
+       self.board = np.zeros((self.length, self.length), dtype=int)
        for q in self.qlist:
            self.board[q.posx][q.posy] = 1
            
@@ -76,7 +77,7 @@ class Board():
             
         list[ind].posy = row
     
-        ret = Board(list)
+        ret = Board(list, [[]])
         ret.place_queens()
         ret.calculate_score()
         return ret
