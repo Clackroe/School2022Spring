@@ -59,7 +59,7 @@ class Board():
     def print_board(self):
         print(f"\n   Current h: {self.score}")
         print(" --Current State---------")
-        for i in range(self.length):
+        for i in reversed(range(self.length)):
             print("| ", end="")
             for j in range(self.length):
                 if (j==self.length-1):
@@ -76,9 +76,13 @@ class Board():
             
         list[ind].posy = row
     
-        ret = Board(list)
+        ret = Board([])
+       
+        ret.qlist = list.copy()
+     
         ret.place_queens()
         ret.calculate_score()
+        
         return ret
     
     
