@@ -11,9 +11,9 @@
 	<!-- Meta tag for character encoding  -->
     <meta charset="UTF-8">
     <!--External Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="Activity5.css">
+    <link rel="stylesheet" type="text/css" href="Cole-InClass3.css">
 	<!-- JavaScript function declarations -->
-    <script src="Activity5.js"></script>
+    <script src="Cole-InClass3.js"></script>
  
 </head>
 
@@ -39,7 +39,7 @@
 			<input type="button" value="3" name="btn3" onclick="showNum(3)" />
 			
 			<!-- ADD: Sets up operation to add current number to next number entered -->
-			<input type="button" value="+" name="btnPlus" onclick="add()" /><br/>
+			<input type="button" value="+" name="btnPlus" onclick="add()" class="action" /><br/>
 			
 			<!-- Number buttons -->
 			<input type="button" value="4" name="btn4" onclick="showNum(4)" />
@@ -47,7 +47,7 @@
 			<input type="button" value="6" name="btn6" onclick="showNum(6)" />
 			
 			<!-- *** Subtract (Implement Me!) *** -->
-			<input type="button" value="-" name="btnMinus" onclick="subtract()" /><br/>
+			<input type="button" value="-" name="btnMinus" onclick="subtract()" class="action"/><br/>
 			
 			<!-- Number buttons -->
 			<input type="button" value="7" name="btn7" onclick="showNum(7)" />
@@ -55,34 +55,34 @@
 			<input type="button" value="9" name="btn9" onclick="showNum(9)" />
 			
 			<!-- *** Multiply (Implement Me!) *** -->
-			<input type="button" value="*" name="btnTimes" onclick="" /><br/>
+			<input type="button" value="*" name="btnTimes" onclick="" class="action"/><br/>
 			
 			<!-- Number buttons -->
 			<input type="button" value="0" name="btn0" onclick="showNum(0)" />
 
 			<!-- *** Power (Implement Me!) Takes two values n^y *** -->
-			<input type="button" value="^" name="btnPow" onclick=""/>
+			<input type="button" value="^" name="btnPow" onclick=""class="action"/>
 			
 			<!-- *** Power2 (Implement Me!) *** Takes one value n^2-->
-			<input type="button" value="^2" name="btnPow2" onclick="pwr2()"/>
+			<input type="button" value="^2" name="btnPow2" onclick="pwr2()" class="action"/>
 			
 			<!-- *** Divide (Implement Me!) *** -->
-			<input type="button" value="/" name="btnDivide" onclick="divide()"/><br/>
+			<input type="button" value="/" name="btnDivide" onclick="divide()" class="action"/><br/>
 			
 			<!-- Decrements value currently displayed -->
-			<input type="button" value="--" name="btnDecrement" onclick="decrement()" />
+			<input type="button" value="--" name="btnDecrement" onclick="decrement()" class="action"/>
 			
 			<!-- *** Increment (Implement Me!) *** -->
-			<input type="button" value="++" name="btnIncrement" onclick="increment()"/>
+			<input type="button" value="++" name="btnIncrement" onclick="increment()" class="action"/>
 			
 			<!-- *** Square Root (Implement Me!) *** -->
-			<input type="button" value="sqrt()" name="btnSqrt" onclick="sqrt()"/><br />
+			<input type="button" value="sqrt()" name="btnSqrt" onclick="sqrt()" class="action"/><br />
 		   
 			<!-- Calculates the floor of the current number being displayed -->
-			<input type="button" value="Floor" name="btnFloor" onclick="" />     
+			<input type="button" value="Floor" name="btnFloor" onclick=""/>     
 		 
 			<!-- *** Round (Implement Me!) *** -->
-			<input type="button" value="Round" name="btnRound" onclick=""/>
+			<input type="button" value="Round" name="btnRound" onclick="" class="action"/>
 			
 			<!-- *** Decimal (Implement Me!) *** -->
 			<input type="button" value="." name="btnDecimal" onclick="showNum('.')" />
@@ -90,7 +90,7 @@
 			<br/><br/>
 				 
 			<input type="reset" name="btnReset" value="Clear" onclick="clear()" />
-			<input type="button" name="btnCalc" value="Calculate" onclick="calculate()" />
+			<input type="button" name="btnCalc" value="Calculate" onclick="calculate()" class="Calculate" />
 		</form>
 
 	</main>

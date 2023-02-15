@@ -72,14 +72,13 @@ class Board():
         
     def produce_neighbor(self, ind: int, row: int):
         
-        list = []
-        for q in self.qlist:
-            list.append(q)
+        list = self.qlist.copy()
             
         list[ind].posy = row
     
         ret = Board(list)
         ret.place_queens()
+        ret.calculate_score()
         return ret
     
     
