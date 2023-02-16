@@ -47,3 +47,57 @@
 }
 
 /* TODO 3: Complete the remaining shapes. Hints contained in the README.md file. */
+
+.square{
+    z-index: 1;
+
+    /* animation-name, duration, delay, iteration-count */
+    animation: bounce 2s 1s infinite;
+
+    /* fill mode is a CSS3 property that allows you to define 
+    how the element should look like before and after the animation */
+    animation-fill-mode: both;
+    position: absolute;
+
+    height: 5rem;
+    width: 5rem;
+    background-color: black;
+}
+
+.triangle{
+
+    z-index: 1;
+
+    /* animation-name, duration, delay, iteration-count */
+    animation: bounce 2s 1s infinite;
+
+    /* fill mode is a CSS3 property that allows you to define 
+    how the element should look like before and after the animation */
+    animation-fill-mode: both;
+
+    position: absolute;
+    margin-left: 25rem;
+    width: 0; 
+    height: 0; 
+    border-left: 2.5rem solid transparent;
+    border-right: 2.5rem solid transparent;
+    
+    border-bottom: 5rem solid black;
+}
+
+.hexagon {
+
+    z-index: 1;
+
+    margin-left: 17rem;
+    /* animation-name, duration, delay, iteration-count */
+    animation: bounce 2s 1s infinite;
+  
+    width: 5rem;
+    height: 5rem;
+
+    position: absolute;
+    background-color: pink;
+
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+}
