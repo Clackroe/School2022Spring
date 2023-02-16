@@ -1,12 +1,20 @@
 //Global variables
 var prevCalc = 0;
 var calc = "";
+var calculated = false;
 
 
 //The following function displays a number in the textfield when a number is clicked.
 //Note that it keeps concatenating numbers which are clicked. 
 function showNum(value) {
-    document.frmCalc.txtNumber.value += value;
+    if(calculated){
+        clear()
+        calculated = false
+     document.frmCalc.txtNumber.value += value;
+    }
+    else{
+        document.frmCalc.txtNumber.value += value;
+    }
 }
 
 //The following function decreases the value of displayed number by 1.
@@ -32,6 +40,7 @@ function add() {
     var num = parseFloat(document.frmCalc.txtNumber.value);
         if (!(isNaN(num))) {
             prevCalc = num;
+            calculated = false
             document.frmCalc.txtNumber.value = "";
             calc = "Add";
         }
@@ -41,6 +50,7 @@ function subtract() {
     var num = parseFloat(document.frmCalc.txtNumber.value);
         if (!(isNaN(num))) {
             prevCalc = num;
+            calculated = false
             document.frmCalc.txtNumber.value = "";
             calc = "Sub";
         }
@@ -50,6 +60,7 @@ function divide(){
     var num = parseFloat(document.frmCalc.txtNumber.value);
         if (!(isNaN(num))) {
             prevCalc = num;
+            calculated = false
             document.frmCalc.txtNumber.value = "";
             calc = "Div";
         }
@@ -88,6 +99,8 @@ function calculate() {
                 var total = prevCalc / num;
                 document.frmCalc.txtNumber.value = total;
             }
+        calculated = true;
+        alert("TESSSST");
         
 }}
 
