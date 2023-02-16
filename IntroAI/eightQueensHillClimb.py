@@ -58,6 +58,7 @@ class driver():
                     print(f"No Better Neighbors Found: {len(neighbors)} neighbors")
                     print("Restarting\n")
                     self.num_restarts +=1
+                    self.num_states +=1
                     curr_state = []
                     curr_state = self.randomise_board()
         
