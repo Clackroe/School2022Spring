@@ -26,8 +26,12 @@ def task1():
     name = request.form['name']
 
     # TODO 1: Create a variable called `age` and assign the value of the age field from the form to it
+    age = request.form['age'] 
 
     # TODO 2: Update the `GLOBALS` dictionary with the new values
+    
+    GLOBALS['name'] = name
+    GLOBALS['age'] = age
 
     # Returns the data to the template
     return render_template('task1.html', name=name, age=age)
@@ -36,21 +40,32 @@ def task1():
 @app.route('/task2', methods=['POST', 'GET'])
 def task2():
     # TODO 3: Get the user's major, credits, and gpa from the form
+    major = request.form['major']
+    creds = int(request.form['credits'])
+    gpa = float(request.form['gpa'])
 
     # TODO 4: Update the `GLOBALS` dictionary with the new values
+    
+    GLOBALS['major'] = major
+    GLOBALS['credits'] = creds
+    GLOBALS['gpa'] = gpa
 
     # TODO 5: Return the data to the template
-    pass  # Replace this line with your code
+    return render_template('task2.html', major=major, credits=creds, gpa=gpa)
 
 
 @app.route('/task3', methods=['POST', 'GET'])
 def task3():
     # TODO 6: Retreive the target_gpa from the form, and update the `GLOBALS` dictionary
-
+    target_gpa = float(request.form['target_gpa'])
+    
+    GLOBALS['target_gpa'] = target_gpa
     # TODO 7: Use the `credits_to_target` function to calculate the number of credits needed to reach the target GPA
 
+    needed_credits = credits_to_target(current_gpa=GLOBALS['gpa'],target_gpa=GLOBALS['target_gpa'],current_credits= GLOBALS['credits'])
+
     # TODO 8: Return the data to the template
-    pass  # Replace this line with your code
+    return render_template('task3.html', target_gpa=target_gpa, credits_needed=needed_credits)
 
 
 def credits_to_target(current_gpa: float, target_gpa: float, current_credits: int) -> int:
@@ -65,8 +80,7 @@ def credits_to_target(current_gpa: float, target_gpa: float, current_credits: in
     returns:
         - The number of credits needed to reach the target GPA
     """
-    quality_points_needed = (target_gpa * current_credits) - \
-        (current_gpa * current_credits)
+    quality_points_needed = (target_gpa * current_credits) -  (current_gpa * current_credits)
     credits_needed = quality_points_needed / 4
 
     return credits_needed
