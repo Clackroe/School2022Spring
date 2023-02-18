@@ -1,14 +1,96 @@
+
+const $ = selector => document.querySelector(selector);
+
+document.addEventListener("DOMContentLoaded", () => {
+
+
+
+document.querySelectorAll('.btnn').forEach(item =>{
+    item.addEventListener('click', event => {
+        showNum(item.value)
+    })
+})
+
+$(".add").addEventListener('click', event =>{
+add();
+});
+
+$(".Calculate").addEventListener('click', event =>{
+calculate();
+});
+
+$(".clearText").addEventListener('click', event =>{
+clearText();
+});
+
+$(".sub").addEventListener('click', event =>{
+    subtract();
+    });
+
+$(".multiply").addEventListener('click', event =>{
+    multiply();
+    });
+
+$(".pow").addEventListener('click', event =>{
+    pow();
+    });
+
+$(".pow2").addEventListener('click', event =>{
+        pow2();
+        });
+
+$(".divide").addEventListener('click', event =>{
+    divide();
+    });
+
+    $(".dec").addEventListener('click', event =>{
+        decrement();
+        });
+
+$(".inc").addEventListener('click', event =>{
+    increment();
+    });
+
+$(".root").addEventListener('click', event =>{
+    sqroot();
+    });
+
+$(".floor").addEventListener('click', event =>{
+    floor();
+    });
+
+$(".round").addEventListener('click', event =>{
+    round();
+    });
+
+
+        
+});
+
+
+
+
 //Global variables
 var prevCalc = 0;
 var calc = "";
 var calculated = false;
 
 
+
+
+
+
+
+
+
+
+
 //The following function displays a number in the textfield when a number is clicked.
 //Note that it keeps concatenating numbers which are clicked. 
 function showNum(value) {
+    console.log("Test")
     if(calculated){
-        clear()
+        clearText()
         calculated = false
      document.frmCalc.txtNumber.value += value;
     }
@@ -24,12 +106,46 @@ function decrement() {
         if (!(isNaN(num))) {
             num--;
             document.frmCalc.txtNumber.value = num;
+            calculated = true;
         }
 }
 function increment() {
     var num = parseFloat(document.frmCalc.txtNumber.value);
     if (!(isNaN(num))) {
         num++;
+        document.frmCalc.txtNumber.value = num;
+        calculated = true;
+    }
+}
+
+function pow2() {
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+    if (!(isNaN(num))) {
+        num = num ** 2;
+        document.frmCalc.txtNumber.value = num;
+    }
+}
+
+function round() {
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+    if (!(isNaN(num))) {
+        num = Math.round(num);
+        document.frmCalc.txtNumber.value = num;
+    }
+}
+
+function sqroot() {
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+    if (!(isNaN(num))) {
+        num = Math.sqrt(num);
+        document.frmCalc.txtNumber.value = num;
+    }
+}
+
+function floor() {
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+    if (!(isNaN(num))) {
+        num = Math.floor(num);
         document.frmCalc.txtNumber.value = num;
     }
 }
@@ -46,6 +162,16 @@ function add() {
         }
 }
 
+function pow() {
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+        if (!(isNaN(num))) {
+            prevCalc = num;
+            calculated = false
+            document.frmCalc.txtNumber.value = "";
+            calc = "Pow";
+        }
+}
+
 function subtract() {
     var num = parseFloat(document.frmCalc.txtNumber.value);
         if (!(isNaN(num))) {
@@ -53,6 +179,15 @@ function subtract() {
             calculated = false
             document.frmCalc.txtNumber.value = "";
             calc = "Sub";
+        }
+}
+function multiply(){
+    var num = parseFloat(document.frmCalc.txtNumber.value);
+        if (!(isNaN(num))) {
+            prevCalc = num;
+            calculated = false
+            document.frmCalc.txtNumber.value = "";
+            calc = "Mult";
         }
 }
 
@@ -66,13 +201,7 @@ function divide(){
         }
 }
 
-function pwr2(){
-    var num = parseFloat(document.frmCalc.txtNumber.value);
-        if (!(isNaN(num))) {
-            num = num*num;
-            document.frmCalc.txtNumber.value = num;
-        }
-}
+
 
 function sqrt() {
     var num = parseFloat(document.frmCalc.txtNumber.value);
@@ -99,12 +228,20 @@ function calculate() {
                 var total = prevCalc / num;
                 document.frmCalc.txtNumber.value = total;
             }
+            else if (calc == "Mult"){
+                var total = prevCalc * num;
+                document.frmCalc.txtNumber.value = total;
+            }
+            else if (calc == "Pow"){
+                var total = prevCalc ** num;
+                document.frmCalc.txtNumber.value = total;
+            }
         calculated = true;
-        alert("TESSSST");
+    
         
 }}
 
-function clear() {
+function clearText() {
 	document.frmCalc.txtNumber.value = "";
 	prevCalc = 0;
 	calc = "";

@@ -26,14 +26,12 @@ input
     text-align:right;
     background-color: lightblue;
  }
-.action{
+#action{
     background-color: orange;
 }
 .Calculate{
     background-color: lightgreen;
 }
-/*Make the buttons that have not been implemented red*/
-input.implement
-{
-    background-color:red;   
+.clearText{
+    background-color: red;
 }
