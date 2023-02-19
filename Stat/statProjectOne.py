@@ -45,24 +45,79 @@ points = []
 
 num_points = 3
 
+exact_prob = 0.75
+
+range = 180
+
+LD = Line(center, slope=0)
+
 def main():
-
-    generate_points()
-    draw_all_points()
-
-    ln = sp.geometry.Line(points[1], center)
     
-    inter:Point2D = ln.intersection(circ)
+    success = 0    
     
-    print(inter[0].__getattribute__(X).simplify)
+    for i in range(10000):
+        generate_points()
+        draw_all_points()
+        gui.mainloop()
         
-    #a = c.create_line(points[1][0], points[1][1], center[0], center[1])
-    #a = c.create_line(inter[0][0], inter[0][1], inter[1][0], inter[1][1])
+        if in_sector():
+            success +=1
+            
+        prob = success/i
+        
+        print(f"Current Prob: {prob}, Exact Prob: {exact_prob}")
+        
+        
 
+
+
+
+def in_sector():
+    
+    for p in range(len(points)):
+        
+        for s in range(len(points)):
+            if (s != p):
+                
+                if not(calculate_sector(points[p], points[s], range)):
+                    break
+        
+        for s in range(len(points)):
+                if (s != p):
+                    if not(calculate_sector(points[p], points[s], -range)):
+                        return False
+                        break
+                
+    return True
+                
+                
+                
+                
+    
+
+def calculate_sector(p1, p2, sector):
+    l1 =  sp.Line(p1, center)
+    l2 = sp.Line(p2, center)
+    
+    angle_to_beat = l1.angle_between(LD)
+    angle_to_beat = deg(angle)
+    angle_to_beat = angle_to_beat.evalf(4)
+    angle_to_beat = angle_to_beat + sector
+    angle_to_beat = angle_to_beat % 360
+    
+    angle = l2.angle_between(LD)
+    angle = deg(angle)
+    angle = angle.evalf(4)
+    angle = angle % 360
+    
+    if (angle <= angle_to_beat and sector > 0):
+        return True
+    elif (angle >= angle_to_beat and sector < 0):
+        return True
+    else:
+        return False
     
     
-    gui.mainloop()
-
 
 
 #Return Random Point Within Circle
@@ -75,6 +130,7 @@ def rand_point():
             
             
 def generate_points():
+    points.clear()
     for i in range(num_points):
         points.append(rand_point())
 
