@@ -1,4 +1,5 @@
 from ast import List
+import math
 
 import random
 
@@ -47,7 +48,7 @@ num_points = 3
 
 exact_prob = 0.75
 
-range = 180
+sector = 180
 
 LD = Line(center, slope=0)
 
@@ -57,15 +58,19 @@ def main():
     
     for i in range(10000):
         generate_points()
-        draw_all_points()
-        gui.mainloop()
+        # draw_all_points()
+        # gui.mainloop()
         
         if in_sector():
             success +=1
-            
-        prob = success/i
+        if(i != 0):  
+         prob = success/(i)
+        else:
+            prob = 0
         
         print(f"Current Prob: {prob}, Exact Prob: {exact_prob}")
+        
+    print(len(points))
         
         
 
@@ -74,21 +79,40 @@ def main():
 
 def in_sector():
     
-    for p in range(len(points)):
-        
-        for s in range(len(points)):
-            if (s != p):
-                
-                if not(calculate_sector(points[p], points[s], range)):
-                    break
-        
-        for s in range(len(points)):
-                if (s != p):
-                    if not(calculate_sector(points[p], points[s], -range)):
-                        return False
-                        break
-                
-    return True
+
+    # Find the center of the circle
+    cx, cy = (x_center, y_center)
+    for p in points:
+        cx += p[0]
+        cy += p[1]
+    cx /= num_points
+    cy /= num_points
+
+    # Calculate the angle between each duck's position and the center of the circle
+    angles = []
+    for p in points:
+        dx = p[0] - cx
+        dy = p[1] - cy
+        angle = math.atan2(dy, dx)
+        angles.append(angle)
+
+    # Sort the angles in ascending order
+    angles.sort()
+
+    # Check if all the ducks are on one side of the circle
+    temp1 = True
+    temp2 = True
+    for p in range(num_points):
+        for i in range(num_points - 1):
+            if abs(angles[i + 1] - angles[i]) >= math.pi:
+                temp1 = False
+        for i in range(num_points - 1):
+            if abs(angles[i + 1] - angles[i]) <=  -math.pi:
+                temp2 = False
+    if (not(temp1) or not(temp2)):
+        return True
+    else:
+        return False
                 
                 
                 
@@ -100,7 +124,7 @@ def calculate_sector(p1, p2, sector):
     l2 = sp.Line(p2, center)
     
     angle_to_beat = l1.angle_between(LD)
-    angle_to_beat = deg(angle)
+    angle_to_beat = deg(angle_to_beat)
     angle_to_beat = angle_to_beat.evalf(4)
     angle_to_beat = angle_to_beat + sector
     angle_to_beat = angle_to_beat % 360
