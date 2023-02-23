@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
 document.querySelectorAll('.btnn').forEach(item =>{
     item.addEventListener('click', event => {
         showNum(item.value)
