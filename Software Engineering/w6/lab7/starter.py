@@ -14,6 +14,7 @@ def chrome_test(path_to_chromedriver):
     driver.quit()  # Always remember to quit the driver
 
 
+
 def main():
     chrome_test(get_chromedriver_path())
 
