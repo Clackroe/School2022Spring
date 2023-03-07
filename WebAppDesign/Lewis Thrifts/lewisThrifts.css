@@ -97,7 +97,7 @@
     margin-bottom: 1rem;
   }
   
-  .video-wrapper {
+  .video-wrapper, .instagram-wrapper {
     position: relative;
     padding-bottom: 56.25%;
     /* 16:9 aspect ratio */
