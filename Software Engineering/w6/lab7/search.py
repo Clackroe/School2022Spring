@@ -29,7 +29,18 @@ def scrape_book_titles(driver: webdriver.Chrome, url: str) -> list:
     # TODO 6: Get the list of books from the current page using the driver
     # - Save the list of books to the variable `books`
     # - See the README for documentation on locating elements in Selenium
-    books = driver.find_elements(By.CLASS_NAME, value="product_pod")
+    book_classes = driver.find_elements(By.CLASS_NAME, value="product_pod")
+    book_headers = []
+    books = []
+    
+    for b in book_classes:
+        heads = b.find_elements(By.TAG_NAME, value="h3")
+        for h in heads:
+            book_headers.append(h)
+    for b in book_headers:
+        book_links = b.find_elements(By.TAG_NAME, value="a")
+        for b in book_links:
+            books.append(b)
 
     # TODO 7: Loop through the list of books and get the title of each book
     # - Append the title of each book to the list `book_titles`
