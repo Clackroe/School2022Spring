@@ -7,8 +7,8 @@
 
     --heading-color: #7c5d3f;
     --text-color: #333;
-    --background-color-back: #f5f5f5;
-    --background-color-front: #fff;
+    --background-color-back: #6b967d;
+    --background-color-front: #b9e4bb;
   }
   
   /* Global styles */
@@ -180,9 +180,19 @@
     justify-content: center;
     background-color: var(--background-color-front);
     padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
+  .social-icon{
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: var(--background-color-back);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
  
   
   
