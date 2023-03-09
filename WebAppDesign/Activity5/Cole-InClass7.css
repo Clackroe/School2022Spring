@@ -35,3 +35,9 @@ input
 .clearText{
     background-color: red;
 }
+
+input[type=button]:active {
+    background-color: #1e72a3;
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
+}
