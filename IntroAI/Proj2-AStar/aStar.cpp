@@ -35,8 +35,13 @@ void generateGrid(Node grid[boardSize][boardSize]);
 void printGrid(Node grid[boardSize][boardSize]);
 void getstartingNode(Node grid[boardSize][boardSize]);
 void getGoalNode(Node grid[boardSize][boardSize]);
+list<Node> getAdjacentNodes(Node* n);
+int calculateH(Node n);
+int calculateG(Node n);
 Node getLowestNode();
-list<Node> getAdjacentNodes(Node* node);
+
+
+
 
 
 
@@ -73,38 +78,70 @@ int main()
     bool contSearch = true;
     while (contSearch)
     {
+        if (openList.empty())
+        {
+            cout << "No Path Found" << endl;
+            break;
+        }
         currNode = getLowestNode();
         closedList.push_back(currNode);
 
         // Check if the current node is the goal
-        if (currNode.isEqual(&(goalNode)))
+        if (currNode.isEqual(&goalNode))
         {
             contSearch = false;
             cout << "Goal Found" << endl;
-            // TODO
+            // TODO: Add Goal Found Code
             break;
         }
 
         // Get Adjacent Nodes
-        list<Node> adjNodes = getAdjacentNodes(currNode);
+        list<Node> adjNodes = getAdjacentNodes(&currNode);
 
         // Check if the adjacent nodes are in the closed list
         for (Node an : adjNodes)
         {
             for (Node cn : closedList)
             {
+
+                an.setParent(&currNode);
+                an.setH(calculateH(an));
+                an.setG(calculateG(an));
+                an.setF();
+
                 if (an.isEqual(&cn))
                 {
                     // TODO: Remove from Adjacent Nodes IF better path not found
+                    if (an.getF() < cn.getF()){
+                        cn.setParent((an.getParent()));
+                        cn.setG(an.getG());
+                        cn.setH(an.getH());
+                        cn.setF();
+                    }
+                    else{
+                        adjNodes.remove(an);
+                    } 
                 }
-                else{
-                    //TODO: Generate G, H, F values
+                else if(an.getWall()){
+                    adjNodes.remove(an);
                 }
+            
             }
+
+            openList.push_back(an);
         }
-       
+
+
 
     }
+
+    for (Node n : closedList)
+    {
+        n.setPath(true);
+    }
+
+    printGrid(board);
+
 }
 
 void generateGrid(Node grid[boardSize][boardSize])
@@ -150,6 +187,10 @@ void printGrid(Node grid[boardSize][boardSize])
             else if (grid[i][j].isEqual(&goalNode))
             {
                 cout << "G ";
+            }
+            else if (grid[i][j].getPath())
+            {
+                cout << "P ";
             }
             
             else
@@ -326,4 +367,33 @@ bool isInClosedList(Node node)
     }
 
     return false;
+}
+
+int calculateH(Node node)
+{
+    int h = 0;
+    int row = node.getRow();
+    int col = node.getCol();
+    int goalRow = goalNode.getRow();
+    int goalCol = goalNode.getCol();
+    h = abs(row - goalRow) + abs(col - goalCol);
+    return h * 10;
+}
+
+int calculateG(Node node)
+{
+    int g = 0;
+    int row = node.getRow();
+    int col = node.getCol();
+    int parentRow = node.getParent()->getRow();
+    int parentCol = node.getParent()->getCol();
+    if (row == parentRow || col == parentCol)
+    {
+        g = node.getParent()->getG() + verticalCost;
+    }
+    else
+    {
+        g = node.getParent()->getG() + diagonalCost;
+    }
+    return g;
 }

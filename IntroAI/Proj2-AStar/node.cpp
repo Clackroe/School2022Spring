@@ -12,6 +12,7 @@ class Node{
         int g; //Movement cost 
 
         bool isWall; //Is the node a wall
+        bool isPath;
 
         Node* parent = NULL; //Parent Node
 
@@ -43,6 +44,7 @@ class Node{
         int getCol(){return col;}
         int getRow(){return row;}
         bool getWall(){return isWall;}
+        bool getPath(){return isPath;}
         Node* getParent(){return parent;}
 
         //Setters
@@ -61,6 +63,9 @@ class Node{
         void setWall(bool wall){
             isWall = wall;
         }
+        void setPath(bool path){
+            isPath = path;
+        }
         void setCol(int c){
             col = c;
         }
@@ -74,6 +79,11 @@ class Node{
 
         bool operator<(const Node& n) const{
             return f < n.f;
+        }
+
+        bool operator==(const Node& n) const{
+            return (row == n.row && col == n.col);
+
         }
 
 
