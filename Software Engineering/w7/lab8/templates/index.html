@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Job Scraper</title>
+</head>
+
+<body>
+    <h1>Job Scraper Database</h1>
+    <h2>Software Engineering Jobs in Charlotte</h2>
+    <ul>
+        {% for job in jobs %}
+        <!-- use bootstrap to make this look nice -->
+        <div class="job-card">
+
+            <li>
+                <!-- TODO 13: use flask to place the correct job title here-->
+                {{ job.title }}
+            </li>
+            <!-- sublist for job details -->
+            <ul>
+                <div class="job-company">
+                    <li>
+                        {{ job.company }}
+                        <!-- TODO 14: use flask to place the correct company name-->
+                    </li>
+                </div>
+                <div class="job-logo">
+                    {{ job.logo }}
+                    <!-- TODO 15: use flask to load the image from the source provided in the json file -->
+
+                </div>
+            </ul>
+        </div>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+.job-card {
+  border-top: 5px solid #264927;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #333;
+
+}
+
+/* Restyle the h1 tag */
+h1 {
+  color: #264927;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* Restyle the h2 tag */
+h2 {
+  color: #264927;
+  font-size: 20px;
+}
+
+/* li job-company style */
+.job-company {
+  color: #264927;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* li job-logo style */
+.job-logo {
+  height: auto;
+}
