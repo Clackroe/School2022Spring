@@ -19,15 +19,16 @@ def populate_database(jobs: list) -> JobsDatabase:
     jobs_database = JobsDatabase()  # Replace None with the correct code
     # TODO 8: Create the jobs table
     jobs_database.create_table()
-    
-    
     # TODO 9: Clear out all jobs from the database
     # - look through the database_manager.py file to find the correct function for deleting all jobs
     jobs_database.delete_all_jobs()
+
     # TODO 10: Loop over the jobs and put them in the database
     # - look through the database_manager.py file to find the correct function for inserting a job
+    
     for job in jobs:
         jobs_database.insert_job(job)
+
     return jobs_database
 
 
@@ -41,8 +42,13 @@ def pull_and_print_all_from_database(jobs_database: JobsDatabase):
     # TODO 11: Pull all jobs from the database, then loop through and print them
     # - look through the database_manager.py file to find the correct function for getting all jobs
     jobs = jobs_database.get_all_jobs()
+    
+    dict_list_to_json(jobs, "jobs.json")
+    
+    
     for j in jobs:
         print(j)
+
 
 def main():
     chromedriver_path = get_chromedriver_path()

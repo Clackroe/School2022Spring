@@ -12,7 +12,7 @@ class Node{
         int g; //Movement cost 
 
         bool isWall; //Is the node a wall
-        bool isPath;
+        bool isPath = false;
 
         Node* parent = NULL; //Parent Node
 
@@ -28,6 +28,7 @@ class Node{
             g = 0;
             isWall = false;
             parent = NULL;
+            isPath = false;
             }
 
         Node(int r, int c, bool wall){
