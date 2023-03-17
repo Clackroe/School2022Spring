@@ -1,6 +1,5 @@
 from scrape_jobs import *
 from json import dumps
-import json
 from utils import erase_file, get_chromedriver_path, LOCATIONS, ROLES
 
 
@@ -10,10 +9,16 @@ def dict_list_to_json(dict_list, filename):
     - dict_list: list of dictionaries
     - filename: name of the file to write to
     """
+
     with open(filename, "a") as file:
         # TODO 6: Use the correct function to write the list of dictionaries to a json file
         # - set the indent to 4 for the json string
-        json.dump(dict_list, file, indent=4)
+        # - set the sort_keys to True for the json string
+    
+        file.write(dumps(dict_list, indent=4, sort_keys=True))
+       
+    # Replace pass with the correct code
+
 
 def test_json_writer():
     """

@@ -35,7 +35,7 @@ void generateGrid(Node grid[boardSize][boardSize]);
 void printGrid(Node grid[boardSize][boardSize]);
 void getstartingNode(Node grid[boardSize][boardSize]);
 void getGoalNode(Node grid[boardSize][boardSize]);
-list<Node> getAdjacentNodes(Node* n);
+list<Node> getAdjacentNodes(Node node);
 int calculateH(Node n);
 int calculateG(Node n);
 Node getLowestNode();
@@ -51,7 +51,7 @@ Node getLowestNode();
 int main()
 {
     // Random Seed
-    srand((unsigned)time(NULL));
+    //srand((unsigned)time(NULL));
 
     // Generate Grid
     generateGrid(board);
@@ -96,7 +96,7 @@ int main()
         }
 
         // Get Adjacent Nodes
-        list<Node> adjNodes = getAdjacentNodes(&currNode);
+        list<Node> adjNodes = getAdjacentNodes(currNode);
 
         // Check if the adjacent nodes are in the closed list
         for (Node an : adjNodes)

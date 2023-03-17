@@ -13,7 +13,10 @@ def jobs():
         # TODO 12: Get the jobs from the JSON file
         # - use only the Charlotte Software Engineer jobs
         # - use the `load` method and then narrow the result down to the correct data
-        jobs = json.load(f)  # Replace None with the correct code
+        jobs = json.load(f)
+        
+        
+
 
     return render_template('index.html', jobs=jobs)
 
