@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
     
+    
     // set focus on first image link
     imageLinks[0].focus();
 });
