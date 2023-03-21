@@ -15,6 +15,18 @@ class Student {
     getLastName() {
         return this.last_name;
     }
+    getMajor(){
+        return this.major;
+    }
+    getGPA(){
+        return this.gpa;
+    }
+    getDescription(){
+        return this.description;
+    }
+    getFullName(){
+        return this.first_name + " " + this.last_name;
+    }
 
 }
 
@@ -33,6 +45,18 @@ class StudentBuilder {
     // Method to set the last name of the student
     setLastName(last_name) {
         this.student.last_name = last_name;
+        return this;
+    }
+    setMajor(major){
+        this.student.major = major;
+        return this;
+    }
+    setGPA(gpa){
+        this.student.gpa = gpa;
+        return this;
+    }
+    setDescription(description){
+        this.student.description = description;
         return this;
     }
 
@@ -54,6 +78,35 @@ function writeStudentProfilePicture(fullName) {
 
     // return the img element to be appended to the DOM
     return img;
+}
+
+function writeStudentInfo(major, gpa){
+    
+    const div = document.createElement("div");
+    div.className = "student-info";
+    const ul = document.createElement("ul");
+    const li1 = document.createElement("li");
+    li1.textContent = "Major: " + major;
+    const li2 = document.createElement("li");
+    li2.textContent = "GPA: " + gpa;
+    ul.appendChild(li1);
+    ul.appendChild(li2);
+    div.appendChild(ul);
+    return div;
+
+    
+}
+
+function writeStudent(student){
+    const div = document.createElement("div");
+    div.className = "student";
+    div.appendChild(writeStudentHeader(student.getFirstName(), student.getLastName()));
+    div.appendChild(writeStudentProfilePicture(student.getFullName()));
+    div.appendChild(writeStudentInfo(student.getMajor(), student.getGPA()));
+    div.appendChild(writeStudentProfile(student.getDescription()));
+    return div;
+
+
 }
 
 function writeStudentHeader(first_name, last_name) {
@@ -92,11 +145,11 @@ function buildPage() {
 
     // populate the student builder object with the student's information
     studentBuilder
-        .setFirstName("Douglas")
-        .setLastName("Thain")
+        .setFirstName("Xander")
+        .setLastName("Cole")
         .setMajor("Computer Science")
         .setGPA(4.0)
-        .setDescription("Douglas is a professor at Notre Dame, where he teaches courses in computer science. He loves writing stellar books on Compiler Construction.")
+        .setDescription("Xander is a computer science major hoping to get his Masters' degree in the near future.")
 
     // build the student object
     const student = studentBuilder.build();
