@@ -6,6 +6,16 @@ class Worker {
         this.salary = salary;
     }
 
+    getName(){
+        return this.name;
+    }
+    getTitle(){
+        return this.title;
+    }
+    getSalary(){
+        return this.salary;
+    }
+
 }
 
 // Factory function to create a new worker
@@ -14,6 +24,13 @@ class WorkerFactory {
     // Method to create a new FryCook, accepts a name
     createFryCook(name) {
         return new Worker({ name, title: 'Fry Cook', salary: salaryRange(25000) });
+    }
+
+    createCashier(name){
+        return new Worker({name, title: 'Cashier', salary: salaryRange(5500)});
+    }
+    createManager(name){
+        return new Worker({name,title: 'Manager',salary: salaryRange(5500)})
     }
 
 }
@@ -47,6 +64,23 @@ function showEmployees() {
 
     // TODO 8 MUST GO HERE
 
+    const nameHeader = document.createElement('th');
+    nameHeader.textContent = 'Name';
+    row.appendChild(nameHeader);
+
+    const titleHeader = document.createElement('th');
+    titleHeader.textContent = 'Title';
+    row.appendChild(titleHeader);
+
+    const salaryHeader = document.createElement('th');
+    salaryHeader.textContent = 'Salary';
+    row.appendChild(salaryHeader);
+
+
+    tableHead.appendChild(row);
+
+    
+
 
     table.appendChild(tableHead);
 
@@ -76,6 +110,20 @@ function showEmployees() {
             const row = document.createElement('tr');
 
             // TODO 9 MUST GO HERE
+            const name = document.createElement('td');
+            name.textContent = workers[i].name;
+            row.appendChild(name);
+
+            const title = document.createElement('td');
+            title.textContent = workers[i].title;
+            row.appendChild(title);
+
+            const salary = document.createElement('td');
+            salary.textContent = workers[i].salary;
+            row.appendChild(salary);
+
+            tableBody.appendChild(row);
+
         };
     }
     table.appendChild(tableBody);

@@ -16,6 +16,96 @@ AnyNumber.prototype.getNumber = function () {
 AnyNumber.prototype.setNumber = function (num) {
     this.real = num;
 }
+AnyNumber.prototype.getImaginary = function () {
+    return this.imaginary;
+}
+AnyNumber.prototype.setImaginary = function (num) {
+    this.imaginary = num;
+}
+AnyNumber.prototype.add = function (other) {
+    return new AnyNumber(this.real + other.real, this.imaginary + other.imaginary);
+}
+AnyNumber.prototype.magnitude = function () {
+    return Math.sqrt(this.real^2 + this.imaginary^2);
+}
+
+
+function increaseC() {
+    c.setNumber(c.getNumber() + 0.1);
+    reload();
+}
+
+function decreaseC() {
+    c.setNumber(c.getNumber() - 0.1);
+    reload();
+}
+
+function increaseCI() {
+    c.setImaginary(c.getImaginary() + 0.1);
+    reload();
+}
+
+function decreaseCI() {
+    c.setImaginary(c.getImaginary() - 0.1);
+    reload();
+}
+
+function changeC() {
+    c.setNumber(random(-2, 2));
+    c.setImaginary(random(-2, 2));
+    reload();
+}
+
+function randomizeColorPalette() {
+    paletteOptions = [makeRandomPalette()];
+    paletteChoiceIndex = 0;
+    palette = paletteOptions[paletteChoiceIndex];
+    reload();
+}
+
+function increaseMaxIterations() {
+    if (maxIterations < 25600) {
+        maxIterations *= 2;
+    }
+    reload();
+}
+
+function decreaseMaxIterations() {
+    if (maxIterations > 25) {
+        maxIterations /= 2;
+    }
+    reload();
+}
+
+function zoomIn() {
+    xMin += 0.5;
+    xMax -= 0.5;
+    yMin += 0.5;
+    yMax -= 0.5;
+    reload();
+}
+
+function zoomOut() {
+    xMin -= 0.5;
+    xMax += 0.5;
+    yMin -= 0.5;
+    yMax += 0.5;
+    reload();
+}
+
+function increaseBreakPoint() {
+    break_point *= 2;
+    reload();
+}
+
+function decreaseBreakPoint() {
+    break_point /= 2;
+    reload();
+}
+
+
+
+
 
 
 // Helper functions for drawing the fractal
@@ -145,6 +235,48 @@ function eventHandler(event) {
         case 80: // p
             changePalette();
             break;
+        case 67: // c
+            reloadColorPalette();
+            break;
+        case 38: // up
+            yMin *= 1.1;    
+            yMax *= 1.1;
+            reload(paletteChoiceIndex);
+            break;
+        case 40: // down
+            yMin /= 1.1;
+            yMax /= 1.1;
+            reload(paletteChoiceIndex);
+            break;
+        case 37: // left
+            xMin /= 1.1;
+            xMax /= 1.1;
+            reload(paletteChoiceIndex);
+            break;
+        case 39: // right
+            xMin *= 1.1;
+            xMax *= 1.1;
+            reload(paletteChoiceIndex);
+            break;
+        case 107: // +
+            maxIterations += 10;
+            reload(paletteChoiceIndex);
+            break;
+        case 109: // -
+            maxIterations -= 10;
+            reload(paletteChoiceIndex);
+            break;
+        case 187: // =
+            break_point *= 1.1;
+            reload(paletteChoiceIndex);
+            break;
+        case 189: // -
+            break_point /= 1.1;
+            reload(paletteChoiceIndex);
+            break;
+
+            
+        
     }
 
 }
