@@ -1,51 +1,30 @@
 
 class Node:
     
-    row, col, f, g, h, parent, isWall = 0, 0, 0, 0, 0, None, False
-    
-    display = "0"
-    
-    def __init__(self, row, col, isWall):
-        self.row = row
-        self.col = col
+    def __init__(self, x, y, isWall):
+        self.x = x
+        self.y = y
         self.isWall = isWall
         self.parent = None
+        self.g = 0
+        self.h = 0
+        self.isGoal = False
+        self.isStart = False
+        self.isPath = False
+        self.isAgent = False
+        self.f = 0
+    
+    def calcH(self, goal):
+        self.h = (abs(self.x - goal.x) + abs(self.y - goal.y)) * 10
+    
+    def calcG(self): 
+        if self.x == self.parent.x or self.y == self.parent.y:
+            self.g = self.parent.g + 10
+        else:
+            self.g = self.parent.g + 14
         
-    def setF(self):
-        f = self.g + self.h
-    def setG(self, value):
-        self.g = value
-    def setH(self, value):
-        self.h = value
-    def setParent(self, n):
-        self.parent = n
-    
-    def getF(self):
-        return self.f
-    
-    def getG(self):
-        return self.g
-    def getH(self):
-        return self.h
-    def getParent(self):
-        return self.parent
-    def getRow(self):
-        return self.row
-    def getCol(self):
-        return self.col
-    
-    def equals(self, inNode):
-        return self.row == inNode.getRow() and self.col == inNode.getCol()
-    
-    def setDisplay(self, value):
-        self.display = value
-    
-    
-    def __str__(self):
-        if (self.isWall):
-            self.display = "1"
-        return str(self.display)
-
+    def calcF(self):
+        self.f = self.g + self.h
 
         
         
