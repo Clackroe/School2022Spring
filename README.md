@@ -21,7 +21,7 @@ Here is a list of the projects included in this repository:
    - [Link to the class folder](/MobileApp)
 
 3. **Software Engineering**: [This was my all-time favorite class up until this point. I learned to work in a team, use git, design complex systems and software, and present a project. Check out my group project! (In another repository)]
-   - [Link to the class folder](/Software\ Engineering)
+   - [Link to the class folder](/Software Engineering)
    - [Link to group project](https://github.com/Clackroe/GroupProj-3135)
 
 4. **Web Application Design**: [I learned a lot in this class. The basics of Web Design on a fundamental level. We used bare JavaScript with minor JQuery, and basic HTML and CSS. While these aren't common practices in production, it has allowed me to excell in learning these new technologies quickly in my own time. (React, Typescript, Next.js, Node, etc)]
